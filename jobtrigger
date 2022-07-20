@@ -1,0 +1,16 @@
+multibranchPipelineJob('example') {
+    branchSources {
+        github {
+            id('23232323') // IMPORTANT: use a constant and unique identifier
+            scanCredentialsId('meesho-github')
+            // repoOwner('OwnerName')
+            repository('Meesho/supply_upload_admin')
+            buildOriginPRHead()
+        }
+    }
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(20)
+        }
+    }
+}
